@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ssvtask2": {
+      "hosting": {
+        "ssvngtask2": [
+          "ssvtask2"
+        ]
+      }
+    }
+  }
+}

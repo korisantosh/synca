@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>Add Task</h2>
+<div>
+
+<mat-form-field>
+  <mat-label>Task Title</mat-label>
+  <input
+    matInput
+    CdkFocusInitial
+    [(ngModel)]="data.task.title"
+    placeholder="Enter Title"
+    value="value"
+  />
+</mat-form-field>
+
+</div>
+<div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Task Due</mat-label>
+    <input
+      matInput
+      [min]="minDate"
+      [matDatepicker]="picker"
+      [(ngModel)]="data.task.due"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field>
+    <mat-label> time </mat-label>
+    <input
+      matInput
+      CdkFocusInitial
+      [(ngModel)]="data.task.time"
+      placeholder="Enter time"
+    />
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-button-toggle-group
+  name="done"
+  aria-label="Task Status"
+  [(ngModel)]="data.task.done"
+>
+  <mat-button-toggle title="Completed" color="accent" [value]="true"
+    ><mat-icon>mood</mat-icon></mat-button-toggle
+  >
+  <mat-button-toggle title="Not Completed" [value]="false"
+    ><mat-icon>mood_bad</mat-icon></mat-button-toggle
+  >
+</mat-button-toggle-group>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    mat-raised-button
+    mat-button
+    color="primary"
+    [mat-dialog-close]="{ task: data.task }"
+  >
+    Ok
+  </button>
+  <button
+    mat-button
+    mat-raised-button
+    *ngIf="data.enableDelete"
+    color="warn"
+    aria-label="Delete"
+    [mat-dialog-close]="{ task: data.task, delete: true }"
+  >
+    Delete
+  </button>
+  <button mat-button color="accent" (click)="cancel()">Cancel</button>
+</div>

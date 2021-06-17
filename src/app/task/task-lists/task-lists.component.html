@@ -1,0 +1,21 @@
+<mat-card
+  role="button"
+  class="item-card"
+  *ngIf="task"
+  (dblclick)="edit.emit(task)"
+>
+  <div class="item" [ngClass]="{'task-done' : task.done}">
+    <mat-icon class="tick-icon" matListIcon>
+      <ng-template [ngIf]="task.done" [ngIfElse]="notDone"
+        >check_circle</ng-template
+      >
+      <ng-template #notDone>radio_button_unchecked</ng-template>
+    </mat-icon>
+    <div class="title">{{ task.title }}</div>
+    <div>
+      <div class="item-summary">
+        <span>{{ task.due?.toDate() | date: "EEE, dd" }}</span>
+      </div>
+    </div>
+  </div>
+</mat-card>
